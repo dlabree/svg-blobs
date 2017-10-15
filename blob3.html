@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <title>blob1</title>
+  <title>blob3</title>
   <script src="js/svg.js"></script>
   <script src="js/svg.easing.min.js"></script>
   <style type="text/css">
@@ -22,7 +22,7 @@ if (SVG.supported) {
 
   var flags = {f1: 0, f2:0, f3:0, f4:0}
 
-  var draw1 = SVG('drawing1').size(792,612).fill('#ff0000');
+  var draw1 = SVG('drawing1').size('100%','100%').fill('#96cb67');
 
   var path1 = draw1.polygon('192.898,171.136 194.593,226.22 128.492,157.576 252.22,153.339').attr('class', 'hello').click(doStuff);
 
@@ -53,8 +53,17 @@ if (SVG.supported) {
 
 function doStuff() {
   var element = SVG.select('polygon.hello');
-  console.log(element);
-  element.fill('#0000ff')
+
+if (flags.f1 == 0) {
+    flags.f1 = 1;
+      element.animate(1000, 'swingTo').transform({ rotation: 180 }).animate(1000, 'swingTo').transform({ x: -200, relative: true, y:-200, relative: true });
+    }
+    else {
+      flags.f1 = 0;
+      element.animate(1000, 'swingFrom').transform({ rotation: 0 }).animate(1000, 'swingTo').transform({ x: -200, relative: true, y:-200, relative: true });
+    }
+
+
 }
 
 function doMoreStuff() {
