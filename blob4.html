@@ -53,9 +53,10 @@ if (SVG.supported) {
   console.log(objects.path1.state[0]);
 
   path1.plot(objects.path1.state[0]).fill(objects.path1.fill).opacity(objects.path1.opacity).attr('class', 'p1').click(doStuff1);
-    
-  path1.animate(2000).plot(objects.path1.state[1]).transform({ x: 20, y: -100, relative: true }).loop(true, true);
 
+  path1loop();
+    
+  
 
   path2.plot(objects.path2.state[0]).fill(objects.path2.fill).opacity(objects.path2.opacity).attr('class', 'p2').click(doStuff2);
     
@@ -88,6 +89,14 @@ if (SVG.supported) {
       objects.path2.flag = "off";
       element.animate(1000, 'swingFrom').transform({ x: 50, relative: true, y:50, relative: true });
     }
+  }
+
+
+  function path1loop() {
+
+    path1.animate(2000).plot(objects.path1.state[1]).transform({ x: 20, y: -100, relative: true }).animate(2000).plot(objects.path1.state[0]).transform({ x: -30, y: -150, relative: true }).animate(2000).plot(objects.path1.state[1]).transform({ x: -20, y: 100, relative: true }).animate(2000).plot(objects.path1.state[1]).transform({ x: 30, y: 150, relative: true }).after(path1loop);
+
+
   }
 
 
