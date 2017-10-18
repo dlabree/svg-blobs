@@ -31,7 +31,8 @@ if (SVG.supported) {
       "M458.909,271.869 c-11.537,0-37.19,34.686-64.909,24.346 c-28.817-10.75-27.631-56.087-59-64.548 c-32.762-8.838-59,41.735-59,75.667 c0,33.934,32.562,63.915,64.333,52 c26.667-10,32.667-10.75,55.667,1 c19.888,10.16,10.673,45,41.667,45 c33.934,0,57-41.066,57-75 C494.667,296.4,492.843,271.869,458.909,271.869z"],
       "fill": "#1B4693",
       "opacity": "0.5",
-      "flag" : "off"
+      "flag" : "off",
+      "speed" : 5000
       },
     
 
@@ -40,7 +41,8 @@ if (SVG.supported) {
         "M331,351.258 c-8.333,41.837,18.695,78.973-17.808,82.242c-35.271,3.16-38.582-41.83-43.192-76c-4.537-33.628,11.997-95.611,47.5-88 C353.003,277.111,338.957,311.314,331,351.258z"],
       "fill": "#BC1F46",
       "opacity": "0.8",
-      "flag" : "off"
+      "flag" : "off",
+      "speed" : 6000
       },
     
 
@@ -49,7 +51,8 @@ if (SVG.supported) {
         "M499.727,285.81c33.591-23.817,35-53.488,15-88.488 c-9.848-17.234,10.166-61.358-10-95.358c-9.389-15.829-66.802-10.153-93.802,4.847s-58.032,43.951-55.032,79 c3.001,35.049,51.015,28.263,67.834,66.263C433.337,273.787,469.568,307.193,499.727,285.81z"],
       "fill": "#29C1A7",
       "opacity": "0.5",
-      "flag" : "off"
+      "flag" : "off",
+      "speed" : 7000
       },
     
 
@@ -58,15 +61,27 @@ if (SVG.supported) {
         "M241.5,110.5c3.69,19.682,35,66.849,56,67c21,0.15,32.44-16,35-39 s42.943-25.46,42.943-36.862c0-21-30.614-33.138-44.812-33.138S235.5,78.5,241.5,110.5z"],
       "fill": "#ED842E",
       "opacity": "0.6",
-      "flag" : "off"
+      "flag" : "off",
+      "speed" : 8000
       }
+
+
     
     }
+var oval = draw1.ellipse(200, 500).fill('#fff').transform({ x: 300, y:150 });
+ 
+var clip = draw1.clip();
+clip.add(oval);
+
   var path1 = draw1.path();
   var path2 = draw1.path();
   var path3 = draw1.path();
   var path4 = draw1.path();
-
+  var group = draw1.group();
+  group.add(path1);
+  group.add(path2);
+  group.add(path3);
+  group.add(path4);
   
   console.log(objects.path1.state[0]);
 
@@ -83,7 +98,8 @@ if (SVG.supported) {
   path3loop();
   path4loop();
     
-  
+group.clipWith(clip);
+
 
 
   function doStuff1() {
@@ -124,28 +140,28 @@ function doStuff4() {
 
   function path1loop() {
 
-    path1.animate(5000).plot(objects.path1.state[1]).transform({ x: 30, y: -100, relative: true }).animate(5000).plot(objects.path1.state[0]).transform({ x: -30, y: -100, relative: true }).animate(5000).plot(objects.path1.state[1]).transform({ x: -30, y: 100, relative: true }).animate(5000).plot(objects.path1.state[0]).transform({ x: 30, y: 100, relative: true }).after(path1loop);
+    path1.animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: 30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: -30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: -30, y: 100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: 30, y: 100, relative: true }).after(path1loop);
 
 
   }
 
   function path2loop() {
 
-    path2.animate(2000).plot(objects.path2.state[1]).transform({ x: 50, y: -50, relative: true }).animate(2000).plot(objects.path2.state[0]).transform({ x: -50, y: -50, relative: true }).animate(2000).plot(objects.path2.state[1]).transform({ x: -50, y: 50, relative: true }).animate(2000).plot(objects.path2.state[0]).transform({ x: 50, y: 50, relative: true }).after(path2loop);
+    path2.animate(objects.path2.speed).plot(objects.path2.state[1]).transform({ x: 50, y: -50, relative: true }).animate(objects.path2.speed).plot(objects.path2.state[0]).transform({ x: -50, y: -50, relative: true }).animate(objects.path2.speed).plot(objects.path2.state[1]).transform({ x: -50, y: 50, relative: true }).animate(objects.path2.speed).plot(objects.path2.state[0]).transform({ x: 50, y: 50, relative: true }).after(path2loop);
 
 
   }
 
   function path3loop() {
 
-    path3.animate(3000).plot(objects.path3.state[1]).transform({ x: -30, y: 100, relative: true }).animate(3000).plot(objects.path3.state[0]).transform({ x: 30, y: 100, relative: true }).animate(3000).plot(objects.path3.state[1]).transform({ x: -30, y: -100, relative: true }).animate(3000).plot(objects.path3.state[0]).transform({ x: 30, y: -100, relative: true }).after(path3loop);
+    path3.animate(objects.path3.speed).plot(objects.path3.state[1]).transform({ x: -30, y: 100, relative: true }).animate(objects.path3.speed).plot(objects.path3.state[0]).transform({ x: 30, y: 100, relative: true }).animate(objects.path3.speed).plot(objects.path3.state[1]).transform({ x: -30, y: -100, relative: true }).animate(objects.path3.speed).plot(objects.path3.state[0]).transform({ x: 30, y: -100, relative: true }).after(path3loop);
 
 
   }
 
   function path4loop() {
 
-    path4.animate(4000).plot(objects.path4.state[1]).transform({ x: 20, y: 80, relative: true }).animate(4000).plot(objects.path4.state[0]).transform({ x: -20, y: 80, relative: true }).animate(4000).plot(objects.path4.state[1]).transform({ x: -20, y: -80, relative: true }).animate(4000).plot(objects.path4.state[0]).transform({ x: 20, y: -80, relative: true }).after(path4loop);
+    path4.animate(objects.path4.speed).plot(objects.path4.state[1]).transform({ x: 20, y: 80, relative: true }).animate(objects.path4.speed).plot(objects.path4.state[0]).transform({ x: -20, y: 80, relative: true }).animate(objects.path4.speed).plot(objects.path4.state[1]).transform({ x: -20, y: -80, relative: true }).animate(objects.path4.speed).plot(objects.path4.state[0]).transform({ x: 20, y: -80, relative: true }).after(path4loop);
 
 
   }
