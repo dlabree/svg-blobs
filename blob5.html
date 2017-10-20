@@ -1,0 +1,137 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>lavalamp</title>
+  <script src="js/svg.js"></script>
+  <script src="js/svg.easing.min.js"></script>
+  <style type="text/css">
+  body {background:#333333;}
+  #logo {top:30px; left:30px; position:absolute; opacity:0.5;}
+  #drawing1 {width:100%; height:100%; }
+  #drawing1 svg {width:100%; height:100%; }
+  #preload {display:block; width:0; height:0;}
+  </style>
+
+</head>
+<body>
+  
+  <object data="img/shape1.svg" type="image/svg+xml" id="preload"></object>
+  <div id="logo"><img src="img/dlab.svg" /></div>
+  <div id="drawing1"></div>
+
+
+
+<script>
+
+if (SVG.supported) {
+
+
+  var draw1 = SVG('drawing1');
+
+  var path1 = draw1.polygon("192.898,171.136 194.593,226.22 128.492,157.576 252.22,153.339").fill("#BC1F46");
+ 
+  var group1 = draw1.group().attr('id', 'hello');
+ 
+  group1.add(path1);  
+
+            var p = document.getElementById("preload");
+
+            // It's important to add an load event listener to the object,
+            // as it will load the svg doc asynchronously
+            p.addEventListener("load",function(){
+
+                // get the inner DOM of the svg
+                var svgDoc = p.contentDocument;
+                // get the inner element by id
+                var a = svgDoc.getElementById("shape1");
+                var b = svgDoc.getElementById("shape2");
+                // copy shape into other SVG
+                //var svgEle = SVG.adopt(a);
+                //var svgEle1 = SVG.adopt(b);
+                group1.add(SVG.adopt(a));
+                group1.add(SVG.adopt(b));
+                //group1.add(svgEle1);
+                //var path2 = draw1.svgEle;
+                console.log(a);
+
+
+
+                //SVG().select("hello").adopt(a);
+                //shapeCopy(a,draw1);
+
+                // add behaviour
+                b.addEventListener("mousedown",function(){
+                        shapeShift(a,b);
+                }, false);
+            }, false);
+
+
+
+  
+  /*console.log(objects.path1.state[0]);
+
+
+  path1.plot(objects.path1.state[0]).fill(objects.path1.fill).opacity(objects.path1.opacity).attr('class', 'p1').click(doStuff1);
+
+  
+
+
+
+  path1loop();
+    
+
+
+
+  function doStuff1() {
+    var element = SVG.select('path.p1');
+
+    if (objects.path1.flag == "off") {
+      objects.path1.flag = "on";
+      element.opacity(1);
+    }
+    else {
+      objects.path1.flag = "off";
+      // UNEXPECTED RESULTS - NEED TO FIND A WAY TO ANIMATE IF ALREADY ANIMATING??? NESTED ELEMENTS PERHAPS... 
+      element.animate(1000, 'swingFrom').transform({ rotation: 0 }).animate(1000, 'swingTo').transform({ x: -200, relative: true, y:-200, relative: true });
+    }
+  }
+
+  
+
+  function path1loop() {
+
+    path1.animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: 30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: -30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: -30, y: 100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: 30, y: 100, relative: true }).after(path1loop);
+
+
+  }
+*/
+  
+function shapeCopy(a,b) {
+  console.log("shapeCopy: " + b);
+  //b.adopt(a);
+
+
+}
+  
+function shapeShift(a,b) {
+
+  console.log("shapeShift: " + a);
+
+    //path1.animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: 30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: -30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: -30, y: 100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: 30, y: 100, relative: true }).after(path1loop);
+
+
+  }
+
+
+
+} else {
+  alert('SVG not supported')
+}
+
+</script>
+
+
+</body>
+
+</html>

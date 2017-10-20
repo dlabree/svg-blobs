@@ -2,14 +2,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <title>blob4</title>
+  <title>lavalamp</title>
   <script src="js/svg.js"></script>
   <script src="js/svg.easing.min.js"></script>
   <style type="text/css">
-  body {background:#000000;}
+  body {background:#333333;}
   #logo {top:30px; left:30px; position:absolute; opacity:0.5;}
   #drawing1 {width:100%; height:100%; }
-  #drawing1 svg {width:100%; height:100%;}
+  #drawing1 svg {width:100%; height:100%; }
   </style>
 
 </head>
@@ -63,12 +63,23 @@ if (SVG.supported) {
       "opacity": "0.6",
       "flag" : "off",
       "speed" : 8000
-      }
+      },
 
+      
+      "polygon1" : {
+        "shape" : "520.16,551.5 258.01,551.5 308.313,455.13 469.855,455.13",
+        "fill": "#666666"
+      },
+
+      "polygon2" : {
+        "shape" : "467.566,92.496 310.978,92.496 347.008,3.834 431.535,3.834",
+        "fill": "#666666"
+      }
 
     
     }
-var oval = draw1.ellipse(200, 500).fill('#fff').transform({ x: 300, y:150 });
+var ovalbg = draw1.ellipse(200, 500).fill('#000').transform({ x: 600, y:50 });
+var oval = draw1.ellipse(200, 500).fill('#fff').transform({ x: 300, y:50 });
  
 var clip = draw1.clip();
 clip.add(oval);
@@ -77,13 +88,14 @@ clip.add(oval);
   var path2 = draw1.path();
   var path3 = draw1.path();
   var path4 = draw1.path();
-  var group = draw1.group();
+  var group = draw1.group().move(300, 0);
   group.add(path1);
   group.add(path2);
   group.add(path3);
   group.add(path4);
   
   console.log(objects.path1.state[0]);
+
 
   path1.plot(objects.path1.state[0]).fill(objects.path1.fill).opacity(objects.path1.opacity).attr('class', 'p1').click(doStuff1);
 
@@ -92,6 +104,12 @@ clip.add(oval);
   path3.plot(objects.path3.state[0]).fill(objects.path3.fill).opacity(objects.path3.opacity).attr('class', 'p3').click(doStuff3);
 
   path4.plot(objects.path4.state[0]).fill(objects.path4.fill).opacity(objects.path4.opacity).attr('class', 'p4').click(doStuff4);
+
+  var poly1 = draw1.polygon(objects.polygon1.shape).fill(objects.polygon1.fill).transform({ x: 312 });
+
+
+
+
 
   path1loop();
   path2loop();
