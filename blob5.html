@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <title>lavalamp</title>
+  <title>blob5</title>
   <script src="js/svg.js"></script>
   <script src="js/svg.easing.min.js"></script>
   <style type="text/css">
@@ -28,10 +28,13 @@ if (SVG.supported) {
 
 
   var draw1 = SVG('drawing1');
+  draw1.attr("preserveAspectRatio", "xMidYMid").attr("viewBox", "0 0 792 612");
+  console.log( draw1.attr("viewBox"));
 
   var path1 = draw1.polygon("192.898,171.136 194.593,226.22 128.492,157.576 252.22,153.339").fill("#BC1F46");
  
-  var group1 = draw1.group().attr('id', 'hello');
+  var group1 = draw1.group().attr('id', 'group1');
+  var group2 = draw1.group().attr('id', 'group2').move(300,0);
  
   group1.add(path1);  
 
@@ -43,17 +46,19 @@ if (SVG.supported) {
 
                 // get the inner DOM of the svg
                 var svgDoc = p.contentDocument;
-                // get the inner element by id
-                var a = svgDoc.getElementById("shape1");
-                var b = svgDoc.getElementById("shape2");
+                // get the inner element by id                
+
+                var a = svgDoc.getElementById("path2");
+                var b = svgDoc.getElementById("path1");
                 // copy shape into other SVG
-                //var svgEle = SVG.adopt(a);
+                var svgEle = SVG.adopt(a);
                 //var svgEle1 = SVG.adopt(b);
-                group1.add(SVG.adopt(a));
-                group1.add(SVG.adopt(b));
+                group1.add(svgEle);
+                group2.add(SVG.adopt(b));
                 //group1.add(svgEle1);
                 //var path2 = draw1.svgEle;
-                console.log(a);
+                var o = SVG.get("path2");
+                console.log(o);
 
 
 
@@ -61,8 +66,8 @@ if (SVG.supported) {
                 //shapeCopy(a,draw1);
 
                 // add behaviour
-                b.addEventListener("mousedown",function(){
-                        shapeShift(a,b);
+                a.addEventListener("mousedown",function(){
+                        shapeShift(a,o);
                 }, false);
             }, false);
 
@@ -114,9 +119,11 @@ function shapeCopy(a,b) {
 
 }
   
-function shapeShift(a,b) {
+function shapeShift(a,o) {
 
   console.log("shapeShift: " + a);
+  console.log("shapeShift: " + o);
+  //group2.animate(2000).plot("path2");
 
     //path1.animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: 30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: -30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: -30, y: 100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: 30, y: 100, relative: true }).after(path1loop);
 
