@@ -17,7 +17,7 @@
 <body>
   
   <object data="img/shape1.svg" type="image/svg+xml" id="preload"></object>
-  <div id="logo"><a href="http://dlab.nyc/"><img src="img/dlab.svg" /></div>
+  <div id="logo"><a href="http://dlab.nyc/"><img src="img/dlab.svg" /></a></div>
   <div id="drawing1"></div>
 
 
@@ -30,17 +30,13 @@ if (SVG.supported) {
   var draw1 = SVG('drawing1');
   draw1.attr("preserveAspectRatio", "xMidYMid").attr("viewBox", "0 0 792 612");
   console.log( draw1.attr("viewBox"));
-
-  var path1 = draw1.polygon("192.898,171.136 194.593,226.22 128.492,157.576 252.22,153.339").fill("#BC1F46");
  
   var group1 = draw1.group().attr('id', 'group1');
-  var group2 = draw1.group().attr('id', 'group2').move(300,0);
+  var group2 = draw1.group().attr('id', 'group2').move(200,0);
  
-  group1.add(path1);  
-
             var p = document.getElementById("preload");
 
-            // It's important to add an load event listener to the object,
+            // It's important to add a load event listener to the object,
             // as it will load the svg doc asynchronously
             p.addEventListener("load",function(){
 

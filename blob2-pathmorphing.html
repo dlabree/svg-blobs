@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>blob1</title>
+  <script src="js/svg.js"></script>
+  <script src="js/svg.easing.min.js"></script>
+  <script src="js/svg.pathmorphing.min.js"></script>
+  <style type="text/css">
+  body {background:#000000;}
+  #drawing1 {width:792px; height:612px; position:absolute;}
+  </style>
+
+</head>
+<body>
+  <div id="drawing1"></div>
+
+
+
+<script>
+
+if (SVG.supported) {
+
+  var draw1 = SVG('drawing1').size(792,612).fill('#ff0000');
+
+  var path1 = draw1.path('M150 0 L75 200 L225 200 Z').attr('class', 'hello').click(doStuff);
+
+  var path2 = draw1.path("M286.5,244.5c-11.537,0-37,15-61-58S187.369,87.128,156,78.667 c-32.762-8.838-81.202,24.208-93.5,55.833c-21,54-84,203-28,219c38.417,4,113-188,182-126s97.006,220,128,220 c33.934,0,94-257,68-292C392.264,128.26,320.434,244.5,286.5,244.5z").fill('#BC1F46').opacity(0.5).click(doMoreStuff).attr('class', 'hello3');
+  
+  //path2.animate(2000).plot('M374.271,355.163c-8.333,41.837-24.938,58.171-61.441,61.441 c-35.271,3.16-56.83-27.271-61.44-61.441c-4.537-33.628,25.937-69.051,61.44-61.44S382.228,315.22,374.271,355.163z').move(300, 250).loop(true, true);
+
+  /*var element = path2;
+  alert(element);
+
+  drawing2.click(function() {
+  	alert('draw2');
+    element.fill('#00ff66');
+  });*/
+
+
+//path contains different commands
+function doStuff() {
+  var element = SVG.select('path.hello');
+  console.log(element);
+  element.animate(2000).plot('M100 0 H190 V90 H100 Z').loop(true, true);
+}
+
+//path contains same number of points
+function doMoreStuff() {
+  var element = SVG.select('path.hello3');
+  console.log(element);
+  element.animate(2000).plot('M279.5,77.647c-32.667,1.333-34.819,49.663-62.538,39.323 c-28.817-10.75,15.538-39.323-10.628-84.47c-30.833-50-125,3-125,90.833c0,33.934,45.977,72.32,79.91,72.32 c11.538,0,26.901-11.936,49.901-0.186c19.888,10.16,33.362,20.032,64.356,20.032c33.934,0,55-27.066,55-61 C330.5,120.567,313.405,76.265,279.5,77.647z').loop(true, true);
+}
+
+//path contains two additional points
+function doMoreStuff2() {
+  var element = SVG.select('path.hello3');
+  console.log(element);
+  element.animate(2000).plot('M324.5,365.5c-11.537,0-37,15-61-58 s-38.131-99.372-69.5-107.833c-32.762-8.838-81.202,24.208-93.5,55.833c-21,54-84,203-28,219c61.84,15.943,24.04-76.036,33-135 c9.586-63.082,64.752-93.046,100.417-61c69,62,9.445,160,98.583,219c56.025,37.083,338.973,49.382,369-81c38-165-66-332-145-332 C451.5,84.5,358.434,365.5,324.5,365.5z').loop(true, true);
+}
+
+
+
+} else {
+  alert('SVG not supported')
+}
+
+</script>
+
+
+</body>
+
+</html>
