@@ -7,7 +7,9 @@ SVG animation tests with <a href="http://www.dlab.nyc/testlab/svg-blobs/blob1.ht
 
 **<a href="http://www.dlab.nyc/testlab/svg-blobs/blob2.html" target="_blank">Example 2</a>:** adds targeting for multiple elements within a single SVG, and includes more goodies in the event handlers.
 
-**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob2-easing.html" target="_blank">Example 2b</a>:** adds easing to animations.
+**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob2-easing.html" target="_blank">Example 2b</a>:** adds easing to animations with easing plug-in.
+
+**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob2-pathmorphing.html" target="_blank">Example 2c</a>:** adds better morphing support pathmorphing plug-in.
 
 **<a href="http://www.dlab.nyc/testlab/svg-blobs/blob3.html" target="_blank">Example 3</a>:** adds support for multi-step animations and transforms.
 

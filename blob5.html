@@ -34,6 +34,11 @@ if (SVG.supported) {
   var group1 = draw1.group().attr('id', 'group1');
   var group2 = draw1.group().attr('id', 'group2').move(200,0);
  
+  var path1 = draw1.path();
+  var path2 = draw1.path();
+  
+  group1.add(path1);
+
             var p = document.getElementById("preload");
 
             // It's important to add a load event listener to the object,
@@ -44,8 +49,8 @@ if (SVG.supported) {
                 var svgDoc = p.contentDocument;
                 // get the inner element by id                
 
-                var a = svgDoc.getElementById("path2");
-                var b = svgDoc.getElementById("path1");
+                var a = svgDoc.getElementById("path1");
+                var b = svgDoc.getElementById("path2");
                 // copy shape into other SVG
                 var svgEle = SVG.adopt(a);
                 //var svgEle1 = SVG.adopt(b);
@@ -119,7 +124,7 @@ function shapeShift(a,o) {
 
   console.log("shapeShift: " + a);
   console.log("shapeShift: " + o);
-  //group2.animate(2000).plot("path2");
+  //draw1.animate(2000).plot(o);
 
     //path1.animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: 30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: -30, y: -100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[1]).transform({ x: -30, y: 100, relative: true }).animate(objects.path1.speed).plot(objects.path1.state[0]).transform({ x: 30, y: 100, relative: true }).after(path1loop);
 
