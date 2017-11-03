@@ -19,7 +19,9 @@ SVG animation tests with <a href="http://www.dlab.nyc/testlab/svg-blobs/blob1.ht
 
 **<a href="http://www.dlab.nyc/testlab/svg-blobs/lavalamp.html" target="_blank">Lava Lamp</a>:** Here's the first "practical" application of all this nonsense which, ironically, is even more nonsensical. A clipping path is introduced here to "contain" the blobs into a neat little lava lamp shape!
 
-**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob5.html" target="_blank">Example 5</a>:** *(Work in progress)* Adds capability to reference data from external SVG file. Getting tripped up on how best to reference the actual elements within the code and looking for the cleanest solution (that the library clearly provides!) 
+**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob5.html" target="_blank">Example 5</a>:** Adds capability to reference data from external SVG file. 
+
+**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob5.html" target="_blank">Example 5b</a>:** *(Work in progress)* Introducing polygons to the mix! Creating a for loop which looks for number of polygons in a particular group. Not quite working as desired. Might make sense to give the parent group an ID but the still not clicking. another day, another polygon!
 
 **More to come...**
 

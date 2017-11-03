@@ -16,7 +16,7 @@
 </head>
 <body>
   
-  <object data="img/shape1.svg" type="image/svg+xml" id="shape1"></object>
+  <object data="img/shape2.svg" type="image/svg+xml" id="shape1"></object>
   <div id="logo"><a href="http://dlab.nyc/"><img src="img/dlab.svg" /></a></div>
   <div id="drawing1"></div>
 
@@ -48,18 +48,32 @@ if (SVG.supported) {
                 // get the inner DOM of the svg
                 var svgDoc = p.contentDocument;
                 // get the inner element by id                
-                var a = svgDoc.getElementById("path1");
-                var b = svgDoc.getElementById("path2");
+                var a = svgDoc.getElementById("state1");
+                var b = svgDoc.getElementById("state2");
                 // copy shape into other SVG
                 var svgA = SVG.adopt(a);
                 var svgB = SVG.adopt(b);
+
+                console.log(svgA);
 
                 group1.add(svgA);
                 group2.add(svgB);
 
                 // reference path data in object B
-                c = svgA.array();
-                d = svgB.array();
+                var c;
+                var d;
+
+                var l = svgA;
+                console.log(l)
+
+                for (i = 0; i == l ; i++) {
+                  c[i] = svgA.polygon(i).array();
+                  d[i] = svgB.polygon(i).array();
+
+                // plot path data into object A
+                svgA.animate(1000).plot(d[i]);
+
+                };
 
                 // plot path data into object A
                 svgA.animate(1000).plot(d);
