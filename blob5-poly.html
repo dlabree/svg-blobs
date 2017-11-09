@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <title>blob5</title>
+  <title>blob5-poly</title>
   <script src="js/svg.js"></script>
   <script src="js/svg.easing.min.js"></script>
   <style type="text/css">
@@ -54,29 +54,29 @@ if (SVG.supported) {
                 var svgA = SVG.adopt(a);
                 var svgB = SVG.adopt(b);
 
-                console.log(svgA);
-
                 group1.add(svgA);
                 group2.add(svgB);
 
-                // reference path data in object B
-                var c;
-                var d;
+                // reference polygon data in object B
+                var c = svgA.select("polygon");
+                var d = svgB.select("polygon");
 
-                var l = svgA;
-                console.log(l)
+                l = svgA.select("polygon").length();
+                console.log(l);
 
-                for (i = 0; i == l ; i++) {
-                  c[i] = svgA.polygon(i).array();
-                  d[i] = svgB.polygon(i).array();
+
+                for (i = 0; i < l ; i++) {
+
+                  //console.log(svgA.get(i));
+
+                  svgA.select("polygon").animate(1000).plot(d[i]);
+                  //console.log(svgA.select("polygon").get[i]);
 
                 // plot path data into object A
-                svgA.animate(1000).plot(d[i]);
+                //svgA.animate(1000).plot(c[i]);
 
                 };
 
-                // plot path data into object A
-                svgA.animate(1000).plot(d);
 
                 // add behavior
                 a.addEventListener("mousedown",function(){
