@@ -21,7 +21,13 @@ SVG animation tests with <a href="http://www.dlab.nyc/testlab/svg-blobs/blob1.ht
 
 **<a href="http://www.dlab.nyc/testlab/svg-blobs/blob5.html" target="_blank">Example 5</a>:** Adds capability to reference data from external SVG file. 
 
-**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob5.html" target="_blank">Example 5b</a>:** *(Work in progress)* Introducing polygons to the mix! Creating a for loop which looks for number of polygons in a particular group. Not quite working as desired. Might make sense to give the parent group an ID but the still not clicking. another day, another polygon!
+**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob5-poly.html" target="_blank">Example 5-poly</a>:** Introducing polygons to the mix! This example takes an external SVG file and morphs 2 layers containing similar polygons. 
+
+**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob5-path.html" target="_blank">Example 5-path</a>:** Same as previous example but for SVG files only containing paths. 
+
+**<a href="http://www.dlab.nyc/testlab/svg-blobs/blob5-path-poly.html" target="_blank">Example 5-path-poly</a>:** This example combines the last two into one version that is somewhat more path/polygon agnostic. More work to be done on cleaning up the code into something much more concise, with ability to handle all kinds of shapes that may be present in a more complex SVG.
+
+**<a href="http://www.dlab.nyc/testlab/svg-blobs/fire.html" target="_blank">Fire</a>:** Another real-world example building on the previous examples to create an animated "fire" containing paths and polygons from a 2-layer SVG file created in Adobe Illustrator.
 
 **More to come...**
 

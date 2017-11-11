@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>blob5-path-poly</title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script src="js/svg.js"></script>
+  <script src="js/svg.easing.min.js"></script>
+  <script src="js/svg.pathmorphing.min.js"></script>
+  <style type="text/css">
+  body {background:#333333;}
+  #logo {top:30px; left:30px; position:absolute; opacity:0.5;}
+  #drawing1 {width:100%; height:100%; }
+  #drawing1 svg {width:100%; height:100%; }
+  #shape1 {display:block; width:0; height:0;}
+  </style>
+
+</head>
+<body>
+  
+  <object data="img/shape3.svg" type="image/svg+xml" id="shape1"></object>
+  <div id="logo"><a href="http://dlab.nyc/"><img src="img/dlab.svg" /></a></div>
+  <div id="drawing1"></div>
+
+
+
+<script>
+
+if (SVG.supported) {
+
+
+  var draw1 = SVG('drawing1');
+  draw1.attr("preserveAspectRatio", "xMidYMid").attr("viewBox", "0 0 792 612");
+ 
+  var group1 = draw1.group().attr('id', 'group1');
+  var group2 = draw1.group().attr('id', 'group2').move(200,0).opacity(0.1);
+ 
+  // reference external SVG and place into object
+
+            var p = document.getElementById("shape1");
+
+            // It's important to add a load event listener to the object,
+            // as it will load the svg doc asynchronously
+            p.addEventListener("load",function(){
+
+                // get the inner DOM of the svg
+                var svgDoc = p.contentDocument;
+                // get the inner element by id                
+                var a = svgDoc.getElementById("state1");
+                var b = svgDoc.getElementById("state2");
+                // copy shape into other SVG
+                var svgA = SVG.adopt(a);
+                var svgB = SVG.adopt(b);
+
+                group1.add(svgA);
+                group2.add(svgB);
+
+
+                //var l1 = svgA.select("path").length();
+                //var l2 = svgA.select("polygon").length();
+                svgA.select("path").addClass('my-path1').opacity(0.9);
+                svgA.select("polygon").addClass('my-polygon1').opacity(0.9);
+
+
+                var i = 0;
+
+                var elementsPath = $('.my-path1').each(function() {
+
+                    var pointsArrayPath = svgB.select('path').get(i).attr("d");
+                    var color = svgB.select('path').get(i).attr("fill");
+                  
+                    console.log(this + " is number " + i + " needs to get data from " + pointsArrayPath);
+                  i++;
+
+                     this.instance.animate(3000).plot(pointsArrayPath).fill(color); 
+
+                });
+
+                var ii = 0;
+
+                var elementsPoly = $('.my-polygon1').each(function() {
+
+                    var pointsArrayPoly = svgB.select('polygon').get(ii).attr("points");
+                    var color = svgB.select('polygon').get(ii).attr("fill");
+
+                    console.log(this + " is number " + ii + " needs to get data from " + pointsArrayPoly);
+                  ii++;
+
+                     this.instance.animate(3000).plot(pointsArrayPoly).fill(color); 
+
+                });
+
+                
+                // add behavior
+                a.addEventListener("mousedown",function(){
+                        shapeShift(svgB,c);
+                }, false);
+            }, false);
+
+  
+function shapeCopy(object,path) {
+  console.log("shapeCopy: " + path);
+  //object.adopt(path);
+
+
+}
+  
+function shapeShift(object,path) {
+
+  console.log("shapeShift: " + object);
+  console.log("shapeShift: " + path);
+  object.animate(2000).plot(path);
+
+
+
+  }
+
+
+
+} else {
+  alert('SVG not supported')
+}
+
+</script>
+
+
+</body>
+
+</html>
