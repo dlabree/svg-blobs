@@ -3,6 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
   <title>blob5-poly</title>
+  <script src="js/jquery-1.12.4.js"></script>
   <script src="js/svg.js"></script>
   <script src="js/svg.easing.min.js"></script>
   <style type="text/css">
@@ -33,10 +34,6 @@ if (SVG.supported) {
   var group1 = draw1.group().attr('id', 'group1');
   var group2 = draw1.group().attr('id', 'group2').move(200,0);
  
-  var path1 = draw1.path(/*'M150 0 L75 200 L225 200 Z'*/).fill('#000099').attr('id', 'pp1');
-  
-  group1.add(path1).transform({ x: 30, y: 100 });
-
   // reference external SVG and place into object
 
             var p = document.getElementById("shape1");
@@ -57,27 +54,24 @@ if (SVG.supported) {
                 group1.add(svgA);
                 group2.add(svgB);
 
-                // reference polygon data in object B
-                var c = svgA.select("polygon");
-                var d = svgB.select("polygon");
 
-                l = svgA.select("polygon").length();
-                console.log(l);
+                var l = svgA.select("polygon").length();
+                svgA.select("polygon").addClass('my-element1');
+                svgB.select("polygon").addClass('my-element2');
 
 
-                for (i = 0; i < l ; i++) {
+                var i = 0;
 
-                  //console.log(svgA.get(i));
+                var elements = $('.my-element1').each(function() {
 
-                  svgA.select("polygon").animate(1000).plot(d[i]);
-                  //console.log(svgA.select("polygon").get[i]);
+                    var pointsArray = svgB.select('polygon').get(i).attr("points");
+                  
+                    console.log(this + " is number " + i + " needs to get data from " + pointsArray);
+                  i++;
 
-                // plot path data into object A
-                //svgA.animate(1000).plot(c[i]);
+                     this.instance.animate(2000, "elastic").plot(pointsArray); 
 
-                };
-
-
+                });
                 // add behavior
                 a.addEventListener("mousedown",function(){
                         shapeShift(svgB,c);
